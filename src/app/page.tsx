@@ -1,101 +1,156 @@
-import Image from "next/image";
+import Link from "next/link";
+import { FaPizzaSlice, FaTruck, FaLeaf } from "react-icons/fa";
+import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className={styles.home}>
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>
+            Delicious Pizza Delivered to Your Door
+          </h1>
+          <p className={styles.heroSubtitle}>
+            Experience the taste of perfection with Pizza Palace
+          </p>
+          <div className={styles.heroButtons}>
+            <Link
+              href="/menu"
+              className={`${styles.heroButton} ${styles.primaryButton}`}
+            >
+              View Menu
+            </Link>
+            <Link
+              href="/order"
+              className={`${styles.heroButton} ${styles.secondaryButton}`}
+            >
+              Order Now
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      <section className={styles.features}>
+        <div className={styles.feature}>
+          <FaPizzaSlice className={styles.icon} />
+          <h3>Artisanal Pizzas</h3>
+          <p>
+            Handcrafted with the finest ingredients for an unforgettable taste
+            experience
+          </p>
+        </div>
+        <div className={styles.feature}>
+          <FaTruck className={styles.icon} />
+          <h3>Fast Delivery</h3>
+          <p>
+            Hot and fresh pizzas delivered to your doorstep in 30 minutes or
+            less
+          </p>
+        </div>
+        <div className={styles.feature}>
+          <FaLeaf className={styles.icon} />
+          <h3>Fresh Ingredients</h3>
+          <p>
+            We use only the freshest, locally-sourced ingredients for our pizzas
+          </p>
+        </div>
+      </section>
+
+      <section className={styles.popularPizzas}>
+        <h2 className="section-title">Our Popular Pizzas</h2>
+        <div className={styles.pizzaGrid}>
+          <div className={`${styles.pizzaCard} card`}>
+            <img
+              src="/images/Pepperoni-Pizza.webp"
+              alt="Pepperoni Pizza"
+              className={styles.pizzaImage}
+            />
+            <div className={styles.pizzaContent}>
+              <h3>Pepperoni Pizza</h3>
+              <p>
+                Classic pepperoni with mozzarella cheese on our signature crust
+              </p>
+              <span className={styles.price}>$14.99</span>
+              <Link href="/order" className="btn">
+                Order Now
+              </Link>
+            </div>
+          </div>
+          <div className={`${styles.pizzaCard} card`}>
+            <img
+              src="/images/Margherita-Pizza.jpg"
+              alt="Margherita Pizza"
+              className={styles.pizzaImage}
+            />
+            <div className={styles.pizzaContent}>
+              <h3>Margherita Pizza</h3>
+              <p>
+                Fresh tomatoes, mozzarella, and basil on a thin, crispy crust
+              </p>
+              <span className={styles.price}>$13.99</span>
+              <Link href="/order" className="btn">
+                Order Now
+              </Link>
+            </div>
+          </div>
+          <div className={`${styles.pizzaCard} card`}>
+            <img
+              src="/images/Supreme-Pizza.jpg"
+              alt="Supreme Pizza"
+              className={styles.pizzaImage}
+            />
+            <div className={styles.pizzaContent}>
+              <h3>Supreme Pizza</h3>
+              <p>
+                Loaded with veggies and meats for the ultimate pizza experience
+              </p>
+              <span className={styles.price}>$16.99</span>
+              <Link href="/order" className="btn">
+                Order Now
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.specialOffer}>
+        <div className={styles.offerContent}>
+          <h2>Special Offer</h2>
+          <p>
+            Get 20% off on your first order when you sign up for our newsletter!
+          </p>
+          <form className={styles.newsletterForm}>
+            <input type="email" placeholder="Enter your email" required />
+            <button type="submit" className="btn">
+              Sign Up
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section className={styles.testimonials}>
+        <h2 className="section-title">What Our Customers Say</h2>
+        <div className={styles.testimonialGrid}>
+          <div className={`${styles.testimonialCard} card`}>
+            <p>"The best pizza I've ever had! Fast delivery and always hot."</p>
+            <span className={styles.customerName}>- Sarah M.</span>
+          </div>
+          <div className={`${styles.testimonialCard} card`}>
+            <p>
+              "Pizza Palace never disappoints. Their Supreme pizza is to die
+              for!"
+            </p>
+            <span className={styles.customerName}>- John D.</span>
+          </div>
+          <div className={`${styles.testimonialCard} card`}>
+            <p>
+              "Great variety and excellent customer service. My go-to for pizza
+              night!"
+            </p>
+            <span className={styles.customerName}>- Emily R.</span>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
